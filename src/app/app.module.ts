@@ -12,7 +12,7 @@ import { AddCategoryComponent } from './layouts/admin-layout/category/add-catego
 import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
@@ -21,7 +21,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AdminLayoutComponent,
     CategoryComponent,
     UpdateCategoryComponent,
-    AddCategoryComponent
+    AddCategoryComponent,
+    
 
   ],
   imports: [
@@ -33,8 +34,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatDialogModule,
     ReactiveFormsModule,
     MatPaginatorModule,
+    FormsModule,
     NgbModule,
-    FormsModule
+    
 
   ],
   providers: [],
