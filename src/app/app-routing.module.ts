@@ -5,6 +5,7 @@ import { TemplateLayoutComponent } from './layouts/template-layout/template-layo
 import { CategoryComponent } from './layouts/admin-layout/category/category.component';
 import { AddCategoryComponent } from './layouts/admin-layout/category/add-category/add-category.component';
 import { UpdateCategoryComponent } from './layouts/admin-layout/category/update-category/update-category.component';
+import { ProfilLayoutsComponent } from './layouts/profil-layouts/profil-layouts.component';
 
 const routes: Routes = [
   {path:'',component:TemplateLayoutComponent,children:[
@@ -19,6 +20,15 @@ const routes: Routes = [
   {path:'categories',component:CategoryComponent},
   {path:'addCategory',component:AddCategoryComponent},
   { path: 'update-categorie/:id', component: UpdateCategoryComponent },
+
+  {path:'client',component:ProfilLayoutsComponent,children:[
+    {path:'reservation',loadChildren:()=>import('./views/client/post-reservation/post-reservation.module').then(m=>m.PostReservationModule)},
+
+
+
+
+  ]}
+
 
 ];
 
