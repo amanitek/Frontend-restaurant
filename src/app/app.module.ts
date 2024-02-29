@@ -14,15 +14,18 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { NgbActiveModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProfilLayoutsComponent } from './layouts/profil-layouts/profil-layouts.component';
+import { PostReservationComponent } from './views/client/post-reservation/post-reservation.component';
 @NgModule({
   declarations: [
     AppComponent,
     TemplateLayoutComponent,
     AdminLayoutComponent,
+    ProfilLayoutsComponent,
     CategoryComponent,
     UpdateCategoryComponent,
     AddCategoryComponent,
-    
+
 
   ],
   imports: [
@@ -36,7 +39,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatPaginatorModule,
     FormsModule,
     NgbModule,
-    
+
 
   ],
   providers: [],
