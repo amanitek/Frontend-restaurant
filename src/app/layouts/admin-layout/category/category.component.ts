@@ -65,7 +65,12 @@ export class CategoryComponent implements OnInit{
     this.showAddCategoryForm = false;
   }
 
-
+  openUpdateCategoryDialog(id: number, category: Category) {
+    this.dialog.open(UpdateCategoryComponent, {
+      data: { id, category },
+      width: '500px', // Set the width as needed
+    });
+  }
 
 
   openAddCategory(){
