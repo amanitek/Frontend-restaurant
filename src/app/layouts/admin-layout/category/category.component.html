@@ -23,7 +23,7 @@
                         <td>{{category.description}}</td>
                         <td>
                             <div>
-                                <button type="button" mat-raised-button color="primary" [routerLink]="['/update-categorie', category.id]">Update</button> |
+                                <button type="button" mat-raised-button color="primary" (click)="openUpdateCategoryDialog(category.id,category)">Update</button> |
                                 <button type="button" mat-raised-button color="accent" (click)="deleteCategorieById(category.id)">Delete</button> 
                             </div>
                         </td>
