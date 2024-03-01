@@ -1,12 +1,20 @@
 import { Injectable } from '@angular/core';
 
+
 const USER_KEY = 'auth-user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StorageService {
-  constructor() {}
+  constructor() { }
+// static getUserId():string{
+//   const user =this.getUserId();
+//   if(user== null) return '';
+//   return user.id;
+// }
+
+}
 
   clean(): void {
     window.sessionStorage.clear();
@@ -34,4 +42,5 @@ export class StorageService {
 
     return false;
   }
-}
+
+
