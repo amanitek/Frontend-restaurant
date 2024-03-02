@@ -9,7 +9,8 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { ReservationService } from 'src/app/__services/reservation.service';
-
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { HttpHeaders } from '@angular/common/http';
 
 
 @Component({
@@ -53,8 +54,7 @@ export class PostReservationComponent  {
 
   validateForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private service:ReservationService,
-              ) {
+  constructor(private fb: FormBuilder, private service:ReservationService,private snackBar: MatSnackBar) {
     this.validateForm = this.fb.group({
       tableType: [null, Validators.required],
       dateTime: [null, Validators.required],
@@ -62,12 +62,17 @@ export class PostReservationComponent  {
     });
   }
 
+
   postReservation(){
     console.log(this.validateForm.value);
     this.service.postReservation(this.validateForm.value).subscribe((res)=>{
       console.log(res);
       if (res.id != null){
-        // this.message.succes("resersation posted succfely")
+// Show success message
+    this.snackBar.open('Reservation posted successfully', 'Close', {
+      duration: 3000, // Set the duration for the snackbar
+      panelClass: 'success-snackbar' // Add a custom CSS class for styling
+});
 
       }
     })
