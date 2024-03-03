@@ -1,70 +1,51 @@
-import { Token } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 
-
 const USER_KEY = 'auth-user';
-const TOKEN ='token'
+const TOKEN_KEY = 'auth-token';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class StorageService {
-  constructor() { }
+
+
   static getUserId(): string {
-    const userString = localStorage.getItem(TOKEN);
-
-    if (userString === null) {
-      return ''; // ou une autre valeur par défaut si l'utilisateur n'est pas connecté
-    }
-
-    try {
-      const user = JSON.parse(userString);
-
-      if (user && typeof user === 'object' && 'id' in user) {
-        return user.id;
-      } else {
-        return ''; // ou une autre valeur par défaut si l'ID n'est pas présent dans l'objet utilisateur
-      }
-    } catch (error) {
-      console.error('Erreur lors de la conversion de la chaîne JSON :', error);
-      return ''; // ou une autre valeur par défaut en cas d'erreur de conversion
-    }
+    const user = this.getUser();
+    return user && user.id ? user.id : '';
   }
 
 
-static getToken(): string | null {
-  const token = localStorage.getItem(TOKEN);
-  return token !== null ? token : null;
-}
+  static getUser(): any {
+    const userString = localStorage.getItem(USER_KEY);
+    return userString ? JSON.parse(userString) : null;
+  }
 
+  static getToken(): string | null {
+    const token = localStorage.getItem(TOKEN_KEY);
+    return token ? token : null;
+  }
 
 
   clean(): void {
-    window.sessionStorage.clear();
+    localStorage.clear();
   }
 
-  public saveUser(user: any): void {
-    window.sessionStorage.removeItem(USER_KEY);
-    window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
+  saveUser(user: any): void {
+    localStorage.removeItem(USER_KEY);
+    localStorage.setItem(USER_KEY, JSON.stringify(user));
   }
 
-  public getUser(): any {
-    const user = window.sessionStorage.getItem(USER_KEY);
-    if (user) {
-      return JSON.parse(user);
-    }
-
-    return null;
+  saveToken(token: string): void {
+    localStorage.setItem(TOKEN_KEY, token);
   }
 
-  public isLoggedIn(): boolean {
-    const user = window.sessionStorage.getItem(USER_KEY);
-    if (user) {
-      return true;
-    }
-
-    return false;
+  getUser(): any {
+    const userString = localStorage.getItem(USER_KEY);
+    return userString ? JSON.parse(userString) : null;
   }
 
-
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem(USER_KEY);
+  }
 }
