@@ -35,6 +35,7 @@ import { HttpHeaders } from '@angular/common/http';
 })
 export class PostReservationComponent  {
   colorControl = new FormControl('primary' as ThemePalette);
+  
 
   // isSpinning:boolean=false;
   tableControl = new FormControl();
